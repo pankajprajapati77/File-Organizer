@@ -9,7 +9,7 @@ switch(command){
     //call tree function
     console.log("tree function called and exeuted successfully on path" + path);
     break;
-
+    
     case"organize":
     //call organize function
     console.log("organize function called and executed successfully on path" + path);
