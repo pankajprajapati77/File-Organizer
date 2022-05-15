@@ -1,5 +1,6 @@
 //entry point of my command line
 let helpfunc = require("./commands/help");
+//console.log(helpfunc.second());
 let inputarr = process.argv.slice(2);
 let command = inputarr[0];
 let path = inputarr[1];
@@ -9,7 +10,7 @@ switch(command){
     //call tree function
     console.log("tree function called and exeuted successfully on path" + path);
     break;
-    
+
     case"organize":
     //call organize function
     console.log("organize function called and executed successfully on path" + path);

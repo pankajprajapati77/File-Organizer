@@ -12,7 +12,8 @@ function help(){
 // }
 
 module.exports = {
-    //key value
+    //key value pair
     help : help,
+    //second : abc
     
 }
