@@ -3,7 +3,8 @@ const path = require("path"); //path module
 let types = {
     media: ["mp4", "mkv", "mp3","mov"],
     archives: ['zip', '7z', 'rar', 'tar', 'gz', 'ar', 'iso', "xz"],
-    documents: ['docx', 'doc', 'pdf', 'xlsx', 'xls', 'odt', 'ods', 'odp', 'odg', 'odf', 'txt', 'ps', 'tex',"csv",'json'],
+    documents: ['docx', 'doc', 'pdf', 'xlsx', 'xls', 'odt', 'ods', 'odp', 'odg', 'odf', 'txt', 'ps', 
+    'tex',"csv",'json'],
     app: ['exe', 'dmg', 'pkg', "deb","apk"],
     images: ['png','jpg','jpeg']
 }
@@ -18,17 +19,17 @@ function organize(srcpath){
     }
 
     //2). to check a directory -> organized_files
-    //let organizedfiles = srcpath+ "/" + "organized_files";
+    //let organizedfiles = srcpath+ "/" + "organized_files"; //same as path.join
     let organizedfiles = path.join(srcpath, "organized_files");
     console.log("organized files folder path is", organizedfiles);
     if(fs.existsSync(organizedfiles) == false){
-        //organizedfiles naam ka folder exist nahi karta to ek folder bana do
+        //if there is no folder name with organizedfiles then make it
         fs.mkdirSync(organizedfiles);
     }else console.log("folder aldready exist");
 
     //3). scan the entire srcpath(downloads folder in this case).
 
-    //reads the contents of the directory -> basically reads the names of fiels present in directory
+    //reads the contents of the directory -> basically reads the names of files present in directory
     let allfiles = fs.readdirSync(srcpath);
     //console.log(allfiles);
 
@@ -41,7 +42,7 @@ function organize(srcpath){
         console.log(fullpathoffile);
         //1. check if it is a file or folder
         //lstatsync gives the information regarding the link provides.
-        let isthisAfile = fs.lstatSync(fullpathoffile).isFile();//true-> file hai to or false-> agar folder h
+        let isthisAfile = fs.lstatSync(fullpathoffile).isFile();//true-> if file is present or false-> if it is folder 
         console.log(allfiles[i] + "is" + isthisAfile);
         if(isthisAfile){
             //1.1 get ext name
@@ -70,7 +71,7 @@ return "miscellaneous"
 }
 
 function copyfileToDest(srcpath, fullpathoffile, folderName){
-    //1. foldername ka path banana h
+    //1. make foldername path
     let destfolderpath = path.join(srcpath, "organized_files", folderName);
     //console.log(dest);
 
@@ -87,6 +88,9 @@ function copyfileToDest(srcpath, fullpathoffile, folderName){
                      //src              dest
     fs.copyFileSync(fullpathoffile, destfilename);
 }
+
+let srcpath= "C:\\Users\\Pankaj\\OneDrive\\Documents\\pepcoding\\Course Projects\\File Organizer\\downloads"
+organize(srcpath);
 
 module.exports = {
     organize : organize
