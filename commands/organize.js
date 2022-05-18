@@ -89,8 +89,8 @@ function copyfileToDest(srcpath, fullpathoffile, folderName){
     fs.copyFileSync(fullpathoffile, destfilename);
 }
 
-let srcpath= "C:\\Users\\Pankaj\\OneDrive\\Documents\\pepcoding\\Course Projects\\File Organizer\\downloads"
-organize(srcpath);
+// let srcpath= "C:\\Users\\Pankaj\\OneDrive\\Documents\\pepcoding\\Course Projects\\File Organizer\\downloads"
+// organize(srcpath);
 
 module.exports = {
     organize : organize
